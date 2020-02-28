@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item>
+    <tax_rate>0</tax_rate>
+    <start_date>1900/01/01</start_date>
+    <end_date>1989/03/31</end_date>
+  </item>
+  <item>
+    <tax_rate>3</tax_rate>
+    <start_date>1989/04/01</start_date>
+    <end_date>1997/03/31</end_date>
+  </item>
+  <item>
+    <tax_rate>5</tax_rate>
+    <start_date>1997/04/01</start_date>
+    <end_date>2014/03/31</end_date>
+  </item>
+  <item>
+    <tax_rate>8</tax_rate>
+    <start_date>2014/04/01</start_date>
+    <end_date>2019/09/30</end_date>
+  </item>
+  <item>
+    <tax_rate>10</tax_rate>
+    <start_date>2019/10/01</start_date>
+    <end_date>2099/03/31</end_date>
+  </item>
+</items>

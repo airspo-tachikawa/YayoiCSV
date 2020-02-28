@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7150B49E-3202-422B-9023-C9D9E0F6C629}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YayoiCsv</RootNamespace>
+    <AssemblyName>弥生会計連携（ツール）</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cybergrow.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.76.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.76.0\lib\net35-client\ClosedXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.1.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="control\DataGridViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="control\DataGridViewEx.Designer.cs">
+      <DependentUpon>DataGridViewEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="control\ComboBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="control\ComboBoxEx.Designer.cs">
+      <DependentUpon>ComboBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="control\FormEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="control\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="control\TextBoxEx.Designer.cs">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\InputKurikoshi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\InputKurikoshi.Designer.cs">
+      <DependentUpon>InputKurikoshi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\InputUriage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\InputUriage.Designer.cs">
+      <DependentUpon>InputUriage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\ViewYokinSuitocho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\ViewYokinSuitocho.Designer.cs">
+      <DependentUpon>ViewYokinSuitocho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\ViewGenkinSuitocho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\ViewGenkinSuitocho.Designer.cs">
+      <DependentUpon>ViewGenkinSuitocho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\ViewShisan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\ViewShisan.Designer.cs">
+      <DependentUpon>ViewShisan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\ViewKeihi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\ViewKeihi.Designer.cs">
+      <DependentUpon>ViewKeihi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="enum\KmkKbn.cs" />
+    <Compile Include="ShiwakeDs.cs">
+      <DependentUpon>ShiwakeDs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ShiwakeDs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShiwakeDs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="model\HojoKamoku.cs" />
+    <Compile Include="model\Kamoku.cs" />
+    <Compile Include="model\Holiday.cs" />
+    <Compile Include="form\InputKeihi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\InputKeihi.Designer.cs">
+      <DependentUpon>InputKeihi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\BatchKotsuhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\BatchKotsuhi.Designer.cs">
+      <DependentUpon>BatchKotsuhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\InputNendo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\InputNendo.Designer.cs">
+      <DependentUpon>InputNendo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Static.cs" />
+    <Compile Include="model\Tax.cs" />
+    <EmbeddedResource Include="control\DataGridViewEx.resx">
+      <DependentUpon>DataGridViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="control\ComboBoxEx.resx">
+      <DependentUpon>ComboBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="control\TextBoxEx.resx">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\InputKurikoshi.resx">
+      <DependentUpon>InputKurikoshi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\InputUriage.resx">
+      <DependentUpon>InputUriage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\ViewYokinSuitocho.resx">
+      <DependentUpon>ViewYokinSuitocho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\ViewGenkinSuitocho.resx">
+      <DependentUpon>ViewGenkinSuitocho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\ViewShisan.resx">
+      <DependentUpon>ViewShisan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\ViewKeihi.resx">
+      <DependentUpon>ViewKeihi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\InputKeihi.resx">
+      <DependentUpon>InputKeihi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\BatchKotsuhi.resx">
+      <DependentUpon>BatchKotsuhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\InputNendo.resx">
+      <DependentUpon>InputNendo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="ShiwakeDs.xsc">
+      <DependentUpon>ShiwakeDs.xsd</DependentUpon>
+    </None>
+    <None Include="ShiwakeDs.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShiwakeDs.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ShiwakeDs.xss">
+      <DependentUpon>ShiwakeDs.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 および x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xml\hkmk.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="xml\kmk.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="xml\tax.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="cybergrow.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

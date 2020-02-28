@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Holidays>
+  <Holiday>
+    <Day>2015/01/01 0:00:00</Day>
+    <Name>元日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/01/02 0:00:00</Day>
+    <Name>御用納め期間</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/01/03 0:00:00</Day>
+    <Name>御用納め期間</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/01/12 0:00:00</Day>
+    <Name>成人の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/02/11 0:00:00</Day>
+    <Name>建国記念の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/03/21 0:00:00</Day>
+    <Name>春分の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/04/29 0:00:00</Day>
+    <Name>昭和の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/05/03 0:00:00</Day>
+    <Name>憲法記念日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/05/04 0:00:00</Day>
+    <Name>みどりの日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/05/05 0:00:00</Day>
+    <Name>こどもの日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/05/06 0:00:00</Day>
+    <Name>振替休日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/07/20 0:00:00</Day>
+    <Name>海の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/09/21 0:00:00</Day>
+    <Name>敬老の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/09/22 0:00:00</Day>
+    <Name>国民の休日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/09/23 0:00:00</Day>
+    <Name>秋分の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/10/12 0:00:00</Day>
+    <Name>体育の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/11/03 0:00:00</Day>
+    <Name>文化の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/11/23 0:00:00</Day>
+    <Name>勤労感謝の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/12/23 0:00:00</Day>
+    <Name>天皇誕生日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/12/29 0:00:00</Day>
+    <Name>御用納め期間</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/12/30 0:00:00</Day>
+    <Name>御用納め期間</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2015/12/31 0:00:00</Day>
+    <Name>御用納め期間</Name>
+  </Holiday>
+</Holidays>

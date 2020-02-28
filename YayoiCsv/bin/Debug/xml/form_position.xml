@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<ShiwakeDs xmlns="http://tempuri.org/ShiwakeInputGridDs.xsd">
+  <FormPosition>
+    <FormName>YayoiCsv.MDIParent</FormName>
+    <Height>754</Height>
+    <Width>1382</Width>
+    <Top>467</Top>
+    <Left>845</Left>
+    <WindowState>0</WindowState>
+  </FormPosition>
+  <FormPosition>
+    <FormName>YayoiCsv.ViewGenkinSuitocho</FormName>
+    <Height>501</Height>
+    <Width>603</Width>
+    <Top>26</Top>
+    <Left>26</Left>
+    <WindowState>0</WindowState>
+  </FormPosition>
+  <FormPosition>
+    <FormName>YayoiCsv.InputUriage</FormName>
+    <Height>641</Height>
+    <Width>976</Width>
+    <Top>498</Top>
+    <Left>1046</Left>
+    <WindowState>0</WindowState>
+  </FormPosition>
+  <FormPosition>
+    <FormName>YayoiCsv.InputKeihi</FormName>
+    <Height>641</Height>
+    <Width>927</Width>
+    <Top>498</Top>
+    <Left>1070</Left>
+    <WindowState>0</WindowState>
+  </FormPosition>
+</ShiwakeDs>

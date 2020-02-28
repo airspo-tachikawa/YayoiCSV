@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Holidays>
+  <Holiday>
+    <Day>2019/01/01 0:00:00</Day>
+    <Name>元日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/01/14 0:00:00</Day>
+    <Name>成人の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/02/11 0:00:00</Day>
+    <Name>建国記念の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/03/21 0:00:00</Day>
+    <Name>春分の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/04/29 0:00:00</Day>
+    <Name>昭和の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/05/03 0:00:00</Day>
+    <Name>憲法記念日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/05/04 0:00:00</Day>
+    <Name>みどりの日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/05/05 0:00:00</Day>
+    <Name>こどもの日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/05/06 0:00:00</Day>
+    <Name>休日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/07/15 0:00:00</Day>
+    <Name>海の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/08/11 0:00:00</Day>
+    <Name>山の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/08/12 0:00:00</Day>
+    <Name>休日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/09/16 0:00:00</Day>
+    <Name>敬老の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/09/23 0:00:00</Day>
+    <Name>秋分の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/10/14 0:00:00</Day>
+    <Name>体育の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/11/03 0:00:00</Day>
+    <Name>文化の日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/11/04 0:00:00</Day>
+    <Name>休日</Name>
+  </Holiday>
+  <Holiday>
+    <Day>2019/11/23 0:00:00</Day>
+    <Name>勤労感謝の日</Name>
+  </Holiday>
+</Holidays>

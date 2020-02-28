@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<ShiwakeDs xmlns="http://tempuri.org/ShiwakeInputGridDs.xsd">
+  <Shiwake>
+    <No>1</No>
+    <KrKmkName>消耗品費</KrKmkName>
+    <KrHKmkName>PC消耗品</KrHKmkName>
+    <Kingaku>100000</Kingaku>
+    <KsKmkName>事業主借</KsKmkName>
+    <KsHKmkName />
+    <Tekiyo />
+    <CustomDate>0101</CustomDate>
+    <KmkKbn>経費</KmkKbn>
+    <Week>火</Week>
+  </Shiwake>
+  <Shiwake>
+    <No>2</No>
+    <KrKmkName>消耗品費</KrKmkName>
+    <KrHKmkName>PC消耗品</KrHKmkName>
+    <Kingaku>100000</Kingaku>
+    <KsKmkName>事業主借</KsKmkName>
+    <KsHKmkName />
+    <Tekiyo />
+    <CustomDate>1001</CustomDate>
+    <KmkKbn>経費</KmkKbn>
+    <Week>火</Week>
+  </Shiwake>
+</ShiwakeDs>
