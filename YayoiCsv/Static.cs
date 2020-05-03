@@ -594,12 +594,26 @@ namespace YayoiCsv
         }
 
         /// <summary>
+        /// 祝日ファイルのURL取得
+        /// </summary>
+        /// <param name="key">取得情報キー</param>
+        /// <returns>URL</returns>
+        private static string getUrlOfHoliday(string key)
+        {
+            var xDoc = XDocument.Load(@"xml\url.xml");
+            var xItems = xDoc.Element("items").Elements("item");
+
+            return xItems.Where(x => (string)x.Element("key") == key).Select(x => (string)x.Element("value")).First();
+        }
+
+        /// <summary>
         /// Xmlファイル作成（年別休日）
         /// </summary>
         static void CreateXmlHolidayYear()
         {
             // 内閣府のHPからCSVを取得して、休日ファイルを作成
-            string address = @"https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu_kyujitsu.csv";
+            string address = getUrlOfHoliday("祝日");
+
             var holidays = new List<Holiday>();
 
             var request = System.Net.WebRequest.Create(address);
@@ -787,35 +801,35 @@ namespace YayoiCsv
                     "".ToDoubleQuote(), ",",
                     "".ToDoubleQuote(), ","
                     );
-            } 
+            }
             else
             {
-             return string.Concat("2000".ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                date.ToString("yyyy/MM/dd").ToDoubleQuote(), ",",
-                krKmkNm.ToDoubleQuote(), ",",
-                krHkmkNm.ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                taxString.ToDoubleQuote(), ",",
-                krKn.ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                ksKmkNm.ToDoubleQuote(), ",",
-                ksHkmkNm.ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "対象外".ToDoubleQuote(), ",",
-                krKn.ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                tekiyo.ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "0".ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "0".ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                "no".ToDoubleQuote(), ","
-                );
+                return string.Concat("2000".ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   date.ToString("yyyy/MM/dd").ToDoubleQuote(), ",",
+                   krKmkNm.ToDoubleQuote(), ",",
+                   krHkmkNm.ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   taxString.ToDoubleQuote(), ",",
+                   krKn.ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   ksKmkNm.ToDoubleQuote(), ",",
+                   ksHkmkNm.ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "対象外".ToDoubleQuote(), ",",
+                   krKn.ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   tekiyo.ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "0".ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "0".ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   "no".ToDoubleQuote(), ","
+                   );
             }
 
         }
