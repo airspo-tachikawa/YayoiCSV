@@ -581,8 +581,16 @@ namespace YayoiCsv
         /// <param name="nendo">年度</param>
         public static void SetNendoHoliday(int nendo)
         {
-            Static.HolidayList = new List<Holiday>();
-            CreateXmlHolidayYear();
+            try
+            {
+                Static.HolidayList = new List<Holiday>();
+                CreateXmlHolidayYear();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("インターネットの回線が切断されているため、\r\n最新の祝日情報が取得できません。\r\n前回の祝日情報で表示されます。",
+                    "お知らせ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             var xDoc = XDocument.Load(System.IO.Path.Combine(Holiday.HolidayXmlFolder, nendo.ToString() + ".xml"));
             var xHolidays = xDoc.Element("Holidays").Elements("Holiday");
@@ -591,6 +599,10 @@ namespace YayoiCsv
             {
                 Static.HolidayList.Add(holiday);
             }
+
+
+
+
         }
 
         /// <summary>
