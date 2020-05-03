@@ -200,6 +200,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\InputKeihi.resx">
       <DependentUpon>InputKeihi.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="form\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
