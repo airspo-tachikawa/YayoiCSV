@@ -782,6 +782,9 @@ namespace YayoiCsv
             // 23 - 任意 - 付箋1
             // 24 - 任意 - 付箋2
             // 25 - 必須 - 調整
+            // 26 - 任意 - 借方取引先名
+            // 27 - 任意 - 貸方取引先名
+            // ※旧バージョンは25まで
             // ==============================
             if (isNew)
             {
@@ -811,7 +814,7 @@ namespace YayoiCsv
                     "0".ToDoubleQuote(), ",",
                     "no".ToDoubleQuote(), ",",
                     "".ToDoubleQuote(), ",",
-                    "".ToDoubleQuote(), ","
+                    "".ToDoubleQuote()
                     );
             }
             else
@@ -840,7 +843,7 @@ namespace YayoiCsv
                    "".ToDoubleQuote() + ",",
                    "0".ToDoubleQuote(), ",",
                    "0".ToDoubleQuote(), ",",
-                   "no".ToDoubleQuote(), ","
+                   "no".ToDoubleQuote()
                    );
             }
 
@@ -910,6 +913,9 @@ namespace YayoiCsv
                 // 23 - 任意 - 付箋1
                 // 24 - 任意 - 付箋2
                 // 25 - 必須 - 調整
+                // 26 - 任意 - 借方取引先名
+                // 27 - 任意 - 貸方取引先名
+                // ※旧バージョンは25まで
                 // ==============================
 
                 // 
@@ -921,19 +927,19 @@ namespace YayoiCsv
 
                 var dt = new DataTable();
 
-                for (int i = 1; i < 26; i++) dt.Columns.Add("F" + i.ToString(), typeof(string));
+                for (int i = 1; i < 28; i++) dt.Columns.Add("F" + i.ToString(), typeof(string));
 
                 while (!parser.EndOfData)
                 {
                     var csvCells = parser.ReadFields();
                     var row = dt.NewRow();
 
-                    if (csvCells.Length != 25)
+                    if (csvCells.Length < 25)
                     {
-                        MessageBox.Show("取込データの列数が弥生の仕訳データと異なるため、取り込めません。", "取込エラー", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("取込データの列数が弥生の仕訳データの必須項目数に満たないため、取り込めません。", "取込エラー", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    for (int i = 0; i < 25; i++)
+                    for (int i = 0; i < csvCells.Length; i++)
                     {
                         row[i] = csvCells[i];
                     }
