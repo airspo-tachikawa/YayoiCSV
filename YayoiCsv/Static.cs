@@ -581,8 +581,16 @@ namespace YayoiCsv
         /// <param name="nendo">年度</param>
         public static void SetNendoHoliday(int nendo)
         {
-            Static.HolidayList = new List<Holiday>();
-            CreateXmlHolidayYear();
+            try
+            {
+                Static.HolidayList = new List<Holiday>();
+                CreateXmlHolidayYear();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("インターネットの回線が切断されているため、\r\n最新の祝日情報が取得できません。\r\n前回の祝日情報で表示されます。",
+                    "お知らせ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             var xDoc = XDocument.Load(System.IO.Path.Combine(Holiday.HolidayXmlFolder, nendo.ToString() + ".xml"));
             var xHolidays = xDoc.Element("Holidays").Elements("Holiday");
@@ -591,6 +599,23 @@ namespace YayoiCsv
             {
                 Static.HolidayList.Add(holiday);
             }
+
+
+
+
+        }
+
+        /// <summary>
+        /// 祝日ファイルのURL取得
+        /// </summary>
+        /// <param name="key">取得情報キー</param>
+        /// <returns>URL</returns>
+        private static string getUrlOfHoliday(string key)
+        {
+            var xDoc = XDocument.Load(@"xml\url.xml");
+            var xItems = xDoc.Element("items").Elements("item");
+
+            return xItems.Where(x => (string)x.Element("key") == key).Select(x => (string)x.Element("value")).First();
         }
 
         /// <summary>
@@ -599,7 +624,8 @@ namespace YayoiCsv
         static void CreateXmlHolidayYear()
         {
             // 内閣府のHPからCSVを取得して、休日ファイルを作成
-            string address = @"https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu_kyujitsu.csv";
+            string address = getUrlOfHoliday("祝日");
+
             var holidays = new List<Holiday>();
 
             var request = System.Net.WebRequest.Create(address);
@@ -756,6 +782,9 @@ namespace YayoiCsv
             // 23 - 任意 - 付箋1
             // 24 - 任意 - 付箋2
             // 25 - 必須 - 調整
+            // 26 - 任意 - 借方取引先名
+            // 27 - 任意 - 貸方取引先名
+            // ※旧バージョンは25まで
             // ==============================
             if (isNew)
             {
@@ -785,37 +814,37 @@ namespace YayoiCsv
                     "0".ToDoubleQuote(), ",",
                     "no".ToDoubleQuote(), ",",
                     "".ToDoubleQuote(), ",",
-                    "".ToDoubleQuote(), ","
+                    "".ToDoubleQuote()
                     );
-            } 
+            }
             else
             {
-             return string.Concat("2000".ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                date.ToString("yyyy/MM/dd").ToDoubleQuote(), ",",
-                krKmkNm.ToDoubleQuote(), ",",
-                krHkmkNm.ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                taxString.ToDoubleQuote(), ",",
-                krKn.ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                ksKmkNm.ToDoubleQuote(), ",",
-                ksHkmkNm.ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "対象外".ToDoubleQuote(), ",",
-                krKn.ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                tekiyo.ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "0".ToDoubleQuote(), ",",
-                "".ToDoubleQuote() + ",",
-                "".ToDoubleQuote() + ",",
-                "0".ToDoubleQuote(), ",",
-                "0".ToDoubleQuote(), ",",
-                "no".ToDoubleQuote(), ","
-                );
+                return string.Concat("2000".ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   date.ToString("yyyy/MM/dd").ToDoubleQuote(), ",",
+                   krKmkNm.ToDoubleQuote(), ",",
+                   krHkmkNm.ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   taxString.ToDoubleQuote(), ",",
+                   krKn.ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   ksKmkNm.ToDoubleQuote(), ",",
+                   ksHkmkNm.ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "対象外".ToDoubleQuote(), ",",
+                   krKn.ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   tekiyo.ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "0".ToDoubleQuote(), ",",
+                   "".ToDoubleQuote() + ",",
+                   "".ToDoubleQuote() + ",",
+                   "0".ToDoubleQuote(), ",",
+                   "0".ToDoubleQuote(), ",",
+                   "no".ToDoubleQuote()
+                   );
             }
 
         }
@@ -884,6 +913,9 @@ namespace YayoiCsv
                 // 23 - 任意 - 付箋1
                 // 24 - 任意 - 付箋2
                 // 25 - 必須 - 調整
+                // 26 - 任意 - 借方取引先名
+                // 27 - 任意 - 貸方取引先名
+                // ※旧バージョンは25まで
                 // ==============================
 
                 // 
@@ -895,19 +927,19 @@ namespace YayoiCsv
 
                 var dt = new DataTable();
 
-                for (int i = 1; i < 26; i++) dt.Columns.Add("F" + i.ToString(), typeof(string));
+                for (int i = 1; i < 28; i++) dt.Columns.Add("F" + i.ToString(), typeof(string));
 
                 while (!parser.EndOfData)
                 {
                     var csvCells = parser.ReadFields();
                     var row = dt.NewRow();
 
-                    if (csvCells.Length != 25)
+                    if (csvCells.Length < 25)
                     {
-                        MessageBox.Show("取込データの列数が弥生の仕訳データと異なるため、取り込めません。", "取込エラー", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("取込データの列数が弥生の仕訳データの必須項目数に満たないため、取り込めません。", "取込エラー", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    for (int i = 0; i < 25; i++)
+                    for (int i = 0; i < csvCells.Length; i++)
                     {
                         row[i] = csvCells[i];
                     }

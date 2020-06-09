@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml;
 
 namespace YayoiCsv
 {
@@ -33,7 +27,6 @@ namespace YayoiCsv
 
             dv.Sort = "CustomDate ASC";
             dataGridView1.DataSource = dv;
-            Search();
         }
 
         /// <summary>
@@ -57,6 +50,7 @@ namespace YayoiCsv
 
             SetKmkCombo();
             InitGrid();
+            Search(sender, e);
             btnRepair.Enabled = false;
 
         }
@@ -99,7 +93,7 @@ namespace YayoiCsv
                 cmbHKmkSrch.Items.Clear();
                 cmbHKmkSrch.Items.AddRange(Static.HKmkList.Where(x => x.KmkName == cmbKmkSrch.SelectedItem.ToString()).Select(x => x.HKmkName).ToArray());
             }
-            Search();
+            Search(sender, e);
         }
 
         /// <summary>
@@ -227,7 +221,7 @@ namespace YayoiCsv
             }
 
             DateTime dt;
-            if (!DateTime.TryParse(Static.Nendo + "/" +　txtHi.Text.Substring(0, 2) + "/" + txtHi.Text.Substring(2, 2), out dt))
+            if (!DateTime.TryParse(Static.Nendo + "/" + txtHi.Text.Substring(0, 2) + "/" + txtHi.Text.Substring(2, 2), out dt))
             {
                 MessageBox.Show("日付が間違っています。\n正しい日付を入力してください。", "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtHi.Text = "";
@@ -271,45 +265,69 @@ namespace YayoiCsv
             shiwake.Week = Static.GetWeekName(txtHi.Text);            // 曜日
         }
 
-        private void cmbHKmkSrch_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// 検索
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベント</param>
+        private void Search(object sender, EventArgs e)
         {
-            Search();
-        }
+            string filter = "KmkKbn = '" + KmkKbn.経費.ToString() + "'";
 
-        private void txtDateSrch_TextChanged(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-        private void cmbHKmkSrch_TextChanged(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-        private void Search()
-        {
-            var dv = (DataView)dataGridView1.DataSource;
-            string filter = "";
-            filter = "KmkKbn = '" + KmkKbn.経費.ToString() + "'";
+            // 科目(借方)
             if (cmbKmkSrch.SelectedItem != null && cmbKmkSrch.SelectedItem.ToString() != "")
             {
                 filter += " and KrKmkName = '" + cmbKmkSrch.SelectedItem.ToString() + "'";
             }
-            if (cmbHKmkSrch.Text.Trim() != "")
+
+            // 補助科目(借方)
+            if (!string.IsNullOrWhiteSpace(cmbHKmkSrch.Text))
             {
-                
                 filter += " and KrHKmkName = '" + cmbHKmkSrch.Text + "'";
             }
-            if (txtDateSrch.Text.Trim() != "" && txtDateSrch.Text.Length == 2)
+
+            // 日付
+            if (!string.IsNullOrWhiteSpace(txtDateSrch.Text))
             {
-                filter += " and CustomDate like '" + txtDateSrch.Text + "%'";
-            }
-            if (txtDateSrch.Text.Trim() != "" && txtDateSrch.Text.Length == 4)
-            {
-                filter += " and CustomDate = '" + txtDateSrch.Text + "'";
+                switch (txtDateSrch.Text.Length)
+                {
+                    case 2:
+                    case 3:
+                        filter += " and CustomDate like '" + txtDateSrch.Text + "%'";
+                        break;
+                    case 4:
+                        filter += " and CustomDate = '" + txtDateSrch.Text + "'";
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            dv.RowFilter = filter;
+            // 金額
+            if (!string.IsNullOrWhiteSpace(txtKinSrch.Text))
+            {
+                filter += " and Kingaku = " + txtKinSrch.Text;
+            }
+
+            // 科目(貸方)
+            if (!string.IsNullOrWhiteSpace(cmbKmk_KsSrch.Text))
+            {
+                filter += " and KsKmkName = '" + cmbKmk_KsSrch.Text + "'";
+            }
+
+            // 補助科目(貸方)
+            if (cmbHKmk_KsSrch.SelectedItem != null && cmbHKmk_KsSrch.SelectedItem.ToString() != "")
+            {
+                filter += " and KsHKmkName = '" + cmbHKmk_KsSrch.SelectedItem.ToString() + "'";
+            }
+
+            // 摘要
+            if (!string.IsNullOrWhiteSpace(txtTekiyoSrch.Text))
+            {
+                filter += " and Tekiyo like '%" + txtTekiyoSrch.Text + "%'";                
+            }
+
+            ((DataView)dataGridView1.DataSource).RowFilter = filter;
         }
     }
 }

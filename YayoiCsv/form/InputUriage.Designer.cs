@@ -501,6 +501,7 @@
             // colKsKmkNm
             // 
             this.colKsKmkNm.DataPropertyName = "KsKmkName";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.colKsKmkNm.DefaultCellStyle = dataGridViewCellStyle5;
